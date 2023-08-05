@@ -1,0 +1,58 @@
+
+
+body {
+    background: url("../rec/image/img0.webp") repeat-y;
+    background-size: 100%;
+    text-align: center;
+}
+
+.container {
+    margin: 5% 2%;
+    background-color: #6497e470;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.texts {
+    float: left;
+    width: 580px;
+    text-align: left;
+    animation: colorAnmt 6s infinite;
+}
+
+@keyframes colorAnmt {
+    0% {
+        color: #0f0;
+    }
+
+    33% {
+        color: #ff0;
+    }
+
+    66% {
+        color: #00f;
+    }
+
+    100% {
+        color: #0f0;
+    }
+}
+
+.gif_bgm_rapper {
+    float: right;
+    width: 300px;
+}
+
+.goGif {
+    width: 300px;
+
+    border-radius: 10%;
+}
+
+.middleImg {
+    height: 95%;
+    width: 95%;
+    margin-bottom: 20px;
+    border: #2d7cb9 10px solid;
+    border-radius: 5%;
+}
