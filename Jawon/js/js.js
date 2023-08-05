@@ -1,13 +1,25 @@
 window.onload = function () {
+
     //点击播放背景音乐
     var bgmObj = document.getElementById("bgm");
     var bodyObj = document.querySelector("html");
     bodyObj.onmousedown = (event) => {
         if (bgmObj.paused) {
             bgmObj.play();
-            bodyObj.onmousedown = null;
+        }
+        else {
+            bgmObj.pause();
         }
     };
+
+    // 人物移动
+    var goGif = document.querySelector(".goGif");
+    var offset = 0;
+    setInterval(() => {
+        offset -= 4;
+        if (offset < -900) offset = 200;
+        goGif.style.cssText = "margin-left: " + offset + "%;";
+    }, 20);
 
     // 禁用F12,抗检查
     // 键盘事件
@@ -16,18 +28,16 @@ window.onload = function () {
     document.onkeydown = (event) => {
         event = event || window.event;
         if (event.key == "F12") {
-            if(!antiCheckTip)
-            {
+            if (!antiCheckTip) {
                 console.log(warningStr);
                 antiCheckTip = true;
             }
-                return false;
+            return false;
         }
     };
     //禁用右键菜单
     document.oncontextmenu = function (event) {
-        if(!antiCheckTip)
-        {
+        if (!antiCheckTip) {
             console.log(warningStr);
             antiCheckTip = true;
         }
