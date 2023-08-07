@@ -32,13 +32,13 @@ window.onload = function () {
     };
 
     // 人物移动
-    var goGif = document.querySelector(".goGif");
-    var offset = 0;
+    var goGif = document.querySelector(".gif_wrapper");
+    var offset = 100;
     setInterval(() => {
-        offset -= 4;
-        if (offset < -900) offset = 200;
+        offset -= 0.7;
+        if (offset < -83) offset = 100;
         goGif.style.cssText = "margin-left: " + offset + "%;";
-    }, 20);
+    }, 40);
 
     // 禁用F12,抗检查
     // 键盘事件
