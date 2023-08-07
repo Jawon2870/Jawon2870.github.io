@@ -2,15 +2,15 @@ window.onload = function () {
 
     //点击播放背景音乐
     var bgmObj = document.getElementById("bgm");
-    var bodyObj = document.querySelector("html");
-    bodyObj.onmouseup = (event) => {
+    document.documentElement.onmouseup = (event) => {
         if (bgmObj.paused) {
             bgmObj.volume = 0.1;
             bgmObj.play();
             //声音渐强
             var volumeUp = setInterval(() => {
-                if(bgmObj.volume < 0.99){   //防止丢失精度
+                if(bgmObj.volume <= 0.9){   //防止丢失精度
                     bgmObj.volume += 0.1;
+                    // alert(bgmObj.volume);
                 }
                 else{
                     clearInterval(volumeUp);
@@ -22,6 +22,7 @@ window.onload = function () {
             var volumeDown = setInterval(() => {
                 if(bgmObj.volume > 0.2){
                     bgmObj.volume -= 0.2;
+                    // alert(bgmObj.volume);
                 }
                 else{
                     bgmObj.pause();
