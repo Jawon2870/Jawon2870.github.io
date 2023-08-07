@@ -8,19 +8,30 @@ body {
 }
 
 .container {
+    height: 200px;
+    width: 92%;
+    position: relative;
     margin: 5% 2%;
     background-color: #6497e470;
     padding: 2%;
-    border-radius: 10px;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .texts {
+    display: inline;
     float: left;
-    width: 580px;
+    width: auto;
     text-align: left;
     animation: colorAnmt 6s infinite;
-    position: relative;
-    z-index: 2;
+    margin-left: 2%;
+}
+
+h1 {
+    font-size: 50px;
+}
+h2 {
+    font-size: 30px;
 }
 
 a {
@@ -50,16 +61,18 @@ a {
     }
 }
 
-.gif_bgm_rapper {
-    float: right;
-    width: 300px;
+.gif_wrapper {
+    position: relative;
+    height: 100%;
+    width: 90%;
+    margin-left: 110%;
 }
 
 .goGif {
-    width: 300px;
+    height: 100%;
+    display: inline;
     border-radius: 10%;
-    position: relative;
-    z-index: 1;
+    float: left;
 }
 
 #bgm{
