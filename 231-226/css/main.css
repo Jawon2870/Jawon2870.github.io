@@ -1,0 +1,79 @@
+body {
+    height: 100%;
+    background: url("../rec/image/img0.webp") repeat-y;
+    background-size: 100%;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    height: 200px;
+    width: 92%;
+    position: relative;
+    margin: 5% 2%;
+    background-color: #6497e470;
+    padding: 2%;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.texts {
+    display: inline;
+    float: left;
+    width: auto;
+    text-align: left;
+    animation: colorAnim 6s infinite;
+    margin-left: 2%;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+@keyframes colorAnim {
+    0% {
+        color: #0f0;
+    }
+
+    33% {
+        color: #ff0;
+    }
+
+    66% {
+        color: #00f;
+    }
+
+    100% {
+        color: #0f0;
+    }
+}
+
+.gif_wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-left: 110%;
+}
+
+.goGif {
+    height: 100%;
+    display: inline;
+    border-radius: 10%;
+    float: left;
+}
+
+#bgm {
+    display: none;
+}
+
+.middleImg {
+    height: 95%;
+    width: 95%;
+    margin-bottom: 20px;
+    border: #2d7cb9 10px solid;
+    border-radius: 5%;
+}
