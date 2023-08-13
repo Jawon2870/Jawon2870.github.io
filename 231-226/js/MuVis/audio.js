@@ -23,7 +23,7 @@ function SetAudio() {
         3 = HAVE_FUTURE_DATA：当前播放位置以及至少未来一点时间的数据都可用（换句话说，至少有两帧视频，例如）。
         4 = HAVE_ENOUGH_DATA：有足够的数据可用，并且下载速率足够高，以便媒体可以不间断地播放到结束。
         */
-        if (bgmObj.readyState  < 2) return;
+        if (bgmObj.readyState  < 1) return;
 
         // 显示BGM播放
         audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
