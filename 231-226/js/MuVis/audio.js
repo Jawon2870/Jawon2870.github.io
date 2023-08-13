@@ -29,7 +29,7 @@ function SetAudio() {
             //音频可视化
             if (MuVisEnabled == false) {
                 MuVisEnabled = true;
-                MuVis("#MuVis", "#MuVis div", 100, 80);
+                // MuVis("#MuVis", "#MuVis div", 100, 80);
             }
             // 提示正在加载BGM
             audio_ctrl_btn.innerText = "正 在 加 载 B G M · · ·";
@@ -39,7 +39,7 @@ function SetAudio() {
         //音频可视化
         if (MuVisEnabled == false) {
             MuVisEnabled = true;
-            MuVis("#MuVis", "#MuVis div", 100, 80);
+            // MuVis("#MuVis", "#MuVis div", 100, 80);
         }
 
         // 针对移动端暂时使用简单的开始和暂停
