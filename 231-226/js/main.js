@@ -1,5 +1,4 @@
 //由于移动端差异，这里来识别移动端，区别对待
-// 判断是否为移动端
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 window.onload = function () {

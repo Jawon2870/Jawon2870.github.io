@@ -46,11 +46,11 @@ function SetAudio() {
         if (isMobile) {
             if (bgmObj.paused) {
                 bgmObj.play();
-                audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
+                audio_ctrl_btn.innerText = "< 暂 停 B G M >";
                 console.log("音乐播放\n");
             } else {
                 bgmObj.pause();
-                audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
+                audio_ctrl_btn.innerText = "< 播 放 B G M >";
                 console.log("音乐暂停\n");
             }
         }
@@ -58,7 +58,7 @@ function SetAudio() {
         else if (bgmObj.paused) {
             bgmObj.volume = 0.1;
             bgmObj.play();
-            audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
+            audio_ctrl_btn.innerText = "< 暂 停 B G M >";
             console.log("音乐播放\n");
             //声音渐强
             var volumeUp = setInterval(() => {
@@ -76,7 +76,7 @@ function SetAudio() {
                     bgmObj.volume -= 0.2;
                 } else {
                     bgmObj.pause();
-                    audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
+                    audio_ctrl_btn.innerText = "< 播 放 B G M >";
                     console.log("音乐暂停\n");
                     clearInterval(volumeDown);
                 }
@@ -91,8 +91,8 @@ function SetAudio() {
         if (bgmObj.readyState < 3) return;
 
         // 更新音频加载状态
-        if (bgmObj.paused) audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
-        else audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
+        if (bgmObj.paused) audio_ctrl_btn.innerText = "< 播 放 B G M >";
+        else audio_ctrl_btn.innerText = "< 暂 停 B G M >";
 
         clearInterval(setAudioLoop);
     }, 300);
