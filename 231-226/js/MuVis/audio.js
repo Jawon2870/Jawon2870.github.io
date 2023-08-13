@@ -13,7 +13,8 @@ function SetAudio() {
         audio_ctrl_btn.style.cssText = "";
     });
 
-    var setAudioLoop = setInterval(() => {
+    // 点击播放背景音乐
+    audio_ctrl_btn.addEventListener("click", () => {
         /*
         检查音乐加载状态bgmObj.readyState，是否能播放
         HTMLMediaElement.HAVE_NOTHING
@@ -23,60 +24,76 @@ function SetAudio() {
         3 = HAVE_FUTURE_DATA：当前播放位置以及至少未来一点时间的数据都可用（换句话说，至少有两帧视频，例如）。
         4 = HAVE_ENOUGH_DATA：有足够的数据可用，并且下载速率足够高，以便媒体可以不间断地播放到结束。
         */
-        if (bgmObj.readyState  < 1) return;
-
-        // 显示BGM播放
-        audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
-
-        // 点击播放背景音乐
-        audio_ctrl_btn.addEventListener("click", (event) => {
+        if (bgmObj.readyState < 3) {
+            bgmObj.play();
             //音频可视化
             if (MuVisEnabled == false) {
-                MuVis("#MuVis", "#MuVis div", 100, 80);
                 MuVisEnabled = true;
+                MuVis("#MuVis", "#MuVis div", 100, 80);
             }
+            // 提示正在加载BGM
+            audio_ctrl_btn.innerText = "正 在 加 载 B G M · · ·";
+            return;
+        }
 
-            // 针对移动端暂时使用简单的开始和暂停
-            if (isMobile) {
-                if (bgmObj.paused) {
-                    bgmObj.play();
-                    audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
-                    console.log("音乐播放\n");
+        //音频可视化
+        if (MuVisEnabled == false) {
+            MuVisEnabled = true;
+            MuVis("#MuVis", "#MuVis div", 100, 80);
+        }
+
+        // 针对移动端暂时使用简单的开始和暂停
+        if (isMobile) {
+            if (bgmObj.paused) {
+                bgmObj.play();
+                audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
+                console.log("音乐播放\n");
+            } else {
+                bgmObj.pause();
+                audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
+                console.log("音乐暂停\n");
+            }
+        }
+        // 针对PC端使用渐变的开始和暂停
+        else if (bgmObj.paused) {
+            bgmObj.volume = 0.1;
+            bgmObj.play();
+            audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
+            console.log("音乐播放\n");
+            //声音渐强
+            var volumeUp = setInterval(() => {
+                if (bgmObj.volume <= 0.9) {
+                    //防止丢失精度
+                    bgmObj.volume += 0.1;
+                } else {
+                    clearInterval(volumeUp);
+                }
+            }, 200);
+        } else {
+            //声音渐弱
+            var volumeDown = setInterval(() => {
+                if (bgmObj.volume > 0.2) {
+                    bgmObj.volume -= 0.2;
                 } else {
                     bgmObj.pause();
                     audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
                     console.log("音乐暂停\n");
+                    clearInterval(volumeDown);
                 }
-            }
-            // 针对PC端使用渐变的开始和暂停
-            else if (bgmObj.paused) {
-                bgmObj.volume = 0.1;
-                bgmObj.play();
-                audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
-                console.log("音乐播放\n");
-                //声音渐强
-                var volumeUp = setInterval(() => {
-                    if (bgmObj.volume <= 0.9) {
-                        //防止丢失精度
-                        bgmObj.volume += 0.1;
-                    } else {
-                        clearInterval(volumeUp);
-                    }
-                }, 200);
-            } else {
-                //声音渐弱
-                var volumeDown = setInterval(() => {
-                    if (bgmObj.volume > 0.2) {
-                        bgmObj.volume -= 0.2;
-                    } else {
-                        bgmObj.pause();
-                        audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
-                        console.log("音乐暂停\n");
-                        clearInterval(volumeDown);
-                    }
-                }, 100);
-            }
-        });
+            }, 100);
+        }
+
+    });
+
+    // 循环检测，更新音频加载状态
+    var setAudioLoop = setInterval(() => {
+        //不可播放直接返回
+        if (bgmObj.readyState < 3) return;
+
+        // 更新音频加载状态
+        if (bgmObj.paused) audio_ctrl_btn.innerText = "·  播 放 B G M  ·";
+        else audio_ctrl_btn.innerText = "·  暂 停 B G M  ·";
+
         clearInterval(setAudioLoop);
     }, 300);
 
