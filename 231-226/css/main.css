@@ -65,7 +65,7 @@ h2 {
 }
 /* 隐藏默认音乐标签 */
 #bgm {
-/*     display: none; */
+    display: none;
 }
 /* 自定义音乐播放开关 */
 #audio_ctrl_btn {
